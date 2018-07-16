@@ -2,14 +2,15 @@
 
 namespace Tests\Unit\Downloader;
 
-use App\Downloader\URL\URLDownloader;
+use App\Downloader\Url\URLDownloader;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Response;
 use Mockery;
+use GuzzleHttp\HandlerStack;
 use PHPUnit\Framework\TestCase;
 
-class URLDownloaderTest extends TestCase
+class UrlDownloaderTest extends TestCase
 {
     use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
@@ -29,8 +30,9 @@ class URLDownloaderTest extends TestCase
 
     public function getClient(string $content)
     {
-        $handler = new MockHandler(new Response(200, [], $content));
+        $mock = new MockHandler([new Response(200, [], $content)]);
+        $handler = HandlerStack::create($mock);
 
-        return new Client($handler);
+        return new Client(['handler' => $handler]);
     }
 }

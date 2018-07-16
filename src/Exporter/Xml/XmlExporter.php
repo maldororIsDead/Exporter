@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Exporter\XML;
+namespace App\Exporter\Xml;
 
 use App\Exporter\Exportable;
 use Mockery\Exception;
 use SimpleXMLElement;
 
 
-class XMLExporter implements Exportable
+class XmlExporter implements Exportable
 {
     const JSON_VERSION = 'https://jsonfeed.org/version/1';
 
@@ -47,7 +47,7 @@ class XMLExporter implements Exportable
 
     private function checkJSONVersion(array $data): void
     {
-        if ($data['version'] !== XMLExporter::JSON_VERSION) {
+        if ($data['version'] !== XmlExporter::JSON_VERSION) {
             throw new Exception('Incorrect JSON encode version');
         }
     }

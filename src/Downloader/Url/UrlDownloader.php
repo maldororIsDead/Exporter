@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Downloader\URL;
+namespace App\Downloader\Url;
 
 use Generator;
 use GuzzleHttp\ClientInterface;
 
-class URLDownloader
+class UrlDownloader
 {
     /** @var ClientInterface */
     protected $client;

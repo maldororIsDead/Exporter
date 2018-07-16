@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Exporter\JSON;
+namespace App\Exporter\Json;
 
 use App\Exporter\Exportable;
 
 
-class JSONExporter implements Exportable
+class JsonExporter implements Exportable
 {
     public function export(array $data, string $rootElement): void
     {
-        $data['items'] = $data['items']['item'];
+        if ($data['items']) {
+            $data['items'] = $data['items']['item'];
+        }
         $json = json_encode($data, JSON_UNESCAPED_SLASHES);
         $this->generateJSONFile($json, $rootElement);
     }

@@ -7,7 +7,7 @@ use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStreamWrapper;
 use PHPUnit\Framework\TestCase;
 
-class JSONExporterTest extends TestCase
+class JsonExporterTest extends TestCase
 {
     private function clean()
     {
@@ -35,9 +35,11 @@ class JSONExporterTest extends TestCase
 
         $this->assertFileExists(dirname(__FILE__, 4) . DIRECTORY_SEPARATOR . 'test.json');
 
-        $expected = "{\"version\":\"https://jsonfeed.org/version/1\"";
+        $expected = "{\"version\":\"https://jsonfeed.org/version/1\"}";
 
         $this->assertEquals($expected, file_get_contents('test.json'));
+
+        echo memory_get_peak_usage();
     }
 
     public function tearDown()

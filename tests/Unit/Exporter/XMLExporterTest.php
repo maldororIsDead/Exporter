@@ -42,6 +42,8 @@ class XMLExporterTest extends Testcase
         $expected = '<?xml version="1.0"?>' . "\n" . '<test><version>https://jsonfeed.org/version/1</version></test>' . "\n";
 
         $this->assertEquals($expected, file_get_contents('test.xml'));
+
+        echo memory_get_peak_usage();
     }
 
     public function tearDown()
