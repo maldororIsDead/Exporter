@@ -2,14 +2,16 @@
 
 namespace App\Exporter\XML;
 
+use App\Exporter\Exportable;
 use Mockery\Exception;
 use SimpleXMLElement;
 
-class XMLExporter
+
+class XMLExporter implements Exportable
 {
     const JSON_VERSION = 'https://jsonfeed.org/version/1';
 
-    public function export($data, string $rootElement): void
+    public function export(array $data, string $rootElement): void
     {
         $this->checkJSONVersion($data);
         $xmlData = new SimpleXMLElement("<?xml version=\"1.0\"?><{$rootElement}></{$rootElement}>");

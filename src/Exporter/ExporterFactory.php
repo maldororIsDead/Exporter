@@ -5,7 +5,7 @@ use App\Exporter\XMLExporter;
 
 class ExporterFactory
 {
-    public static function createExporter(string $type)
+    public static function createExporter(string $type): Exportable
     {
         $exporter =  "App\\Exporter\\" . strtoupper($type) . "\\" .strtoupper($type) . 'Exporter';
 

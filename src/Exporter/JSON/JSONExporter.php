@@ -2,10 +2,12 @@
 
 namespace App\Exporter\JSON;
 
+use App\Exporter\Exportable;
 
-class JSONExporter
+
+class JSONExporter implements Exportable
 {
-    public function export(array $data, string $rootElement)
+    public function export(array $data, string $rootElement): void
     {
         $data['items'] = $data['items']['item'];
         $json = json_encode($data, JSON_UNESCAPED_SLASHES);
